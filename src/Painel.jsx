@@ -11,7 +11,7 @@ function Painel() {
 
   const carregarDados = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/dados')
+      const response = await fetch('/api/dados')
       const dadosCarregados = await response.json()
       setDados(dadosCarregados.reverse())
       setLoading(false)

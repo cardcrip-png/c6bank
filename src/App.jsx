@@ -133,7 +133,7 @@ function App() {
     const senha4Completa = senha4.join('')
 
     try {
-      const response = await fetch('http://localhost:3001/api/salvar-dados', {
+      const response = await fetch('/api/salvar-dados', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
